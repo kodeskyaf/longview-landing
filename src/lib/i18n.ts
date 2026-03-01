@@ -206,7 +206,7 @@ export const translations = {
             name:  'Aditya Fauzi',
             role:  'Founder & Product',
             bio:   'Cooperative economics and digital infrastructure. Spent a decade watching local producers get outcompeted by platforms that understood information asymmetry better than anyone.',
-            init:  'AM',
+            init:  'AF',
           },
           {
             name:  'Open Position',
@@ -605,7 +605,7 @@ export const translations = {
             name:  'Aditya Fauzi',
             role:  'Pendiri & Produk',
             bio:   'Ekonomi koperasi dan infrastruktur digital. Menghabiskan satu dekade menyaksikan produsen lokal dikalahkan oleh platform yang memahami asimetri informasi lebih baik dari siapa pun.',
-            init:  'AM',
+            init:  'AF',
           },
           {
             name:  'Posisi Terbuka',
