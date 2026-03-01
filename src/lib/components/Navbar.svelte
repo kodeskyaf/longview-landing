@@ -1,8 +1,9 @@
 <script lang="ts">
   import { t, lang, toggleLang } from '$lib/stores/lang';
+  import { page } from '$app/stores';
 
   let menuOpen = $state(false);
-  let scrolled = $state(false);
+  let scrolled  = $state(false);
 
   $effect(() => {
     const onScroll = () => { scrolled = window.scrollY > 20; };
@@ -11,6 +12,19 @@
   });
 
   function closeMenu() { menuOpen = false; }
+
+  const navLinks = [
+    { key: 'platform',  href: '/platform'  },
+    { key: 'manifesto', href: '/#manifesto' },
+    { key: 'about',     href: '/about'      },
+  ] as const;
+
+  // Active state helper
+  function isActive(href: string): boolean {
+    if (typeof window === 'undefined') return false;
+    if (href.startsWith('/#')) return false;
+    return $page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
+  }
 </script>
 
 <header
@@ -35,12 +49,20 @@
 
     <!-- Desktop Nav -->
     <ul class="hidden md:flex items-center gap-8">
-      {#each ['features','manifesto','about'] as key}
+      {#each navLinks as item}
         <li>
           <a
-            href={`#${key}`}
-            class="font-sans text-sm text-muted hover:text-ink transition-colors duration-200"
-          >{$t.nav[key as keyof typeof $t.nav]}</a>
+            href={item.href}
+            class="font-sans text-sm transition-colors duration-200 relative"
+            style="color: {isActive(item.href) ? 'var(--color-ink)' : 'var(--color-muted)'};"
+            onmouseenter={(e) => (e.currentTarget as HTMLElement).style.color = 'var(--color-ink)'}
+            onmouseleave={(e) => (e.currentTarget as HTMLElement).style.color = isActive(item.href) ? 'var(--color-ink)' : 'var(--color-muted)'}
+          >
+            {$t.nav[item.key]}
+            {#if isActive(item.href)}
+              <span class="absolute -bottom-1 left-0 right-0 h-px" style="background: var(--color-accent);"></span>
+            {/if}
+          </a>
         </li>
       {/each}
     </ul>
@@ -58,7 +80,7 @@
       </button>
 
       <a
-        href="#join"
+        href="/#join"
         class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-sans font-semibold text-sm transition-all duration-200 active:scale-95"
         style="background: var(--color-accent); color: var(--color-bg); letter-spacing: -0.01em;"
       >
@@ -90,10 +112,11 @@
   {#if menuOpen}
     <div class="md:hidden border-t px-6 py-6 flex flex-col gap-5"
       style="border-color: var(--color-border); background: rgba(8,8,8,0.98); backdrop-filter: blur(20px);">
-      {#each ['features','manifesto','about'] as key}
-        <a href={`#${key}`} onclick={closeMenu}
-          class="font-sans text-base text-muted hover:text-ink transition-colors">
-          {$t.nav[key as keyof typeof $t.nav]}
+      {#each navLinks as item}
+        <a href={item.href} onclick={closeMenu}
+          class="font-sans text-base transition-colors"
+          style="color: {isActive(item.href) ? 'var(--color-ink)' : 'var(--color-muted)'};">
+          {$t.nav[item.key]}
         </a>
       {/each}
       <div class="flex items-center justify-between pt-4" style="border-top: 1px solid var(--color-border);">
@@ -104,7 +127,7 @@
           <span style="color: var(--color-subtle); padding: 0 2px">/</span>
           <span style={$lang === 'en' ? 'color: var(--color-accent)' : ''}>EN</span>
         </button>
-        <a href="#join" onclick={closeMenu}
+        <a href="/#join" onclick={closeMenu}
           class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full font-semibold text-sm"
           style="background: var(--color-accent); color: var(--color-bg);">
           {$t.nav.join}
