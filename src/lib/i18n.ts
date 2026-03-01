@@ -13,7 +13,7 @@ export const translations = {
     hero: {
       badge:         'Transparent by Design · Open by Default',
       headline_1:    'Know What',
-      headline_2:    'You\'re Really Buying.',
+      headline_2:    'You\'re Buying.',
       subheadline:   'Longview shows you the full picture — who made it, under what conditions, and whether a better local option exists. Real information, finally at the right moment.',
       cta_primary:   'Get Early Access',
       cta_secondary: 'See How It Works',
@@ -203,7 +203,7 @@ export const translations = {
         body:     'We are developers, researchers, and cooperative practitioners who have spent years watching good tools fail to reach the people who needed them most. Longview is our attempt to fix that permanently.',
         members: [
           {
-            name:  'Aditya Marviana',
+            name:  'Aditya Fauzi',
             role:  'Founder & Product',
             bio:   'Cooperative economics and digital infrastructure. Spent a decade watching local producers get outcompeted by platforms that understood information asymmetry better than anyone.',
             init:  'AM',
@@ -412,7 +412,7 @@ export const translations = {
     hero: {
       badge:         'Transparan sejak Desain · Terbuka secara Default',
       headline_1:    'Tahu Benar Apa',
-      headline_2:    'yang Sedang Kamu Beli.',
+      headline_2:    'yang Kamu Beli.',
       subheadline:   'Longview menunjukkan gambaran lengkapnya — siapa yang membuatnya, dalam kondisi seperti apa, dan apakah ada pilihan lokal yang lebih baik. Informasi nyata, tepat di saat yang tepat.',
       cta_primary:   'Dapatkan Akses Awal',
       cta_secondary: 'Lihat Cara Kerjanya',
@@ -602,7 +602,7 @@ export const translations = {
         body:     'Kami adalah pengembang, peneliti, dan praktisi koperasi yang telah bertahun-tahun menyaksikan alat yang bagus gagal menjangkau orang yang paling membutuhkannya. Longview adalah upaya kami untuk memperbaikinya secara permanen.',
         members: [
           {
-            name:  'Aditya Marviana',
+            name:  'Aditya Fauzi',
             role:  'Pendiri & Produk',
             bio:   'Ekonomi koperasi dan infrastruktur digital. Menghabiskan satu dekade menyaksikan produsen lokal dikalahkan oleh platform yang memahami asimetri informasi lebih baik dari siapa pun.',
             init:  'AM',
